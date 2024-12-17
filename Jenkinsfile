@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("custom-agent:latest", "-f Dockerfile .")
+                    dockerImage = docker.build("test/playwright:latest", ".")
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
         stage('Run Pipeline on Docker Agent') {
             agent {
                 docker {
-                    image 'custom-agent:latest'
+                    image 'test/playwright:latest'
                     reuseNode true
                 }
             }
