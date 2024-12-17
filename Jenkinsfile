@@ -3,9 +3,9 @@ pipeline {
 
     stages {
         stage('Clone') {
-            // Clones the repository from the current branch name
-            sh('ls -lha')
-    
+           steps {
+                sh 'ls -lha'
+           }
         }  
 
         // stage('Build Docker Image') {
