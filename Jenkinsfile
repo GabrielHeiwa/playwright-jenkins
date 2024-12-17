@@ -1,33 +1,12 @@
 pipeline {
-    agent none
-
+    agent {
+        docker { image 'node:22.12.0-alpine3.21' }
+    }
     stages {
-        stage('Clone') {
-           steps {
-                sh 'ls -lha'
-           }
-        }  
-
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             dockerImage = docker.build("test/playwright:latest", ".")
-        //         }
-        //     }
-        // }
-
-        // stage('Run Pipeline on Docker Agent') {
-        //     agent {
-        //         docker {
-        //             image 'test/playwright:latest'
-        //             reuseNode true
-        //         }
-        //     }
-        //     steps {
-        //         echo 'Running pipeline inside custom Docker agent...'
-        //         sh 'node --version' // Exemplo de comando no agente
-        //         sh 'npm --version'  // Outro exemplo de comando
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
+            }
+        }
     }
 }
