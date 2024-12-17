@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'ls -lha'
                 sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
