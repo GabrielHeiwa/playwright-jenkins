@@ -2,19 +2,16 @@ pipeline {
     agent none
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                script {
-                    checkout([
-                        $class: 'GitSCM', 
-                        branches: [[name: '*/master']],
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/GabrielHeiwa/playwright-jenkins.git'
-                        ]]
-                    ])
-                }
-            }
-        }
+        stage('Clone') {
+            // Clones the repository from the current branch name
+            echo 'Make the output directory'
+            sh 'mkdir -p build'
+
+            echo 'Cloning files from (branch: "master" )'
+            dir('build') {
+                git branch: 'master', credentialsId: 	gitCredentials, url: 'https://github.com/GabrielHeiwa/playwright-jenkins'
+            }     
+        }  
 
         stage('Build Docker Image') {
             steps {
