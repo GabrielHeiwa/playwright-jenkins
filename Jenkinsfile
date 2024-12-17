@@ -10,7 +10,7 @@ pipeline {
                         branches: [[name: '*/master']],
                         userRemoteConfigs: [[
                             url: 'https://github.com/GabrielHeiwa/playwright-jenkins.git',
-                            credentialsId: null
+                            credentialsId: ''
                         ]]
                     ])
                 }
