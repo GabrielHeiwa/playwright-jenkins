@@ -3,7 +3,6 @@ pipeline {
 
     stages {
         stage('Build Docker Image') {
-            agent { label 'master' } // Executa na máquina principal do Jenkins para criar a imagem Docker
             steps {
                 script {
                     dockerImage = docker.build("custom-agent:latest", "-f Dockerfile .")
