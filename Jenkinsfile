@@ -1,14 +1,15 @@
 pipeline {
     agent none
-    
+
     stages {
         stage('Test') {
             agent {
-                docker { image 'node:22.12.0-alpine3.21' }
+                docker { image 'mcr.microsoft.com/playwright:v1.49.1-noble' }
             }
 
             steps {
-                sh 'node --eval "console.log(process.platform,process.env.CI)"'
+
+                sh 'npx playwright test'
             }
         }
     }
