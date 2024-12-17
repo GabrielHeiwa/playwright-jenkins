@@ -9,7 +9,7 @@ pipeline {
 
             echo 'Cloning files from (branch: "master" )'
             dir('build') {
-                git branch: 'master', credentialsId: 	gitCredentials, url: 'https://github.com/GabrielHeiwa/playwright-jenkins'
+                git branch: 'master', url: 'https://github.com/GabrielHeiwa/playwright-jenkins'
             }     
         }  
 
