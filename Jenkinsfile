@@ -9,8 +9,7 @@ pipeline {
                         $class: 'GitSCM', 
                         branches: [[name: '*/master']],
                         userRemoteConfigs: [[
-                            url: 'https://github.com/GabrielHeiwa/playwright-jenkins.git',
-                            credentialsId: ''
+                            url: 'https://github.com/GabrielHeiwa/playwright-jenkins.git'
                         ]]
                     ])
                 }
