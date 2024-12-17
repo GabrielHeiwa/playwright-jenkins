@@ -2,6 +2,21 @@ pipeline {
     agent none
 
     stages {
+        stage('Clone Repository') {
+            steps {
+                script {
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: '*/master']],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/GabrielHeiwa/playwright-jenkins.git',
+                            credentialsId: null
+                        ]]
+                    ])
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
